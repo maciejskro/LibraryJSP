@@ -1,4 +1,11 @@
 package pl.sda.library.service;
 
-public class BookService implements IBookService {
+import pl.sda.library.entity.Book;
+
+public class BookService implements IBookService  {
+
+    @Override
+    public void removeBook(Book i) {
+
+    }
 }

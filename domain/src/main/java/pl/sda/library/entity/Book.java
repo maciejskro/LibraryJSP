@@ -20,6 +20,7 @@ public class Book extends BaseEntity {
     private String description;
 
     public Book(){
+        super();
     }
 
     public String getTitle() {

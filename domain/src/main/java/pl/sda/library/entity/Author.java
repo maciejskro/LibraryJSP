@@ -1,17 +1,24 @@
 package pl.sda.library.entity;
 
 import javax.persistence.Entity;
-import java.io.Serializable;
 
 @Entity
 public class Author extends BaseEntity {
 
     private String firstname;
-    private String name;
+    private String lastname;
     private String placeOfBorn;
 
 
     public Author() {
+        super();
+    }
+
+    public Long getId() {
+        return super.getId();
+    }
+    public void setId(Long id) {
+        super.setId(id);
     }
 
     public String getFirstname() {
@@ -22,12 +29,12 @@ public class Author extends BaseEntity {
         this.firstname = firstname;
     }
 
-    public String getName() {
-        return name;
+    public String getLastname() {
+        return lastname;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setLastname(String lastname) {
+        this.lastname = lastname;
     }
 
     public String getPlaceOfBorn() {

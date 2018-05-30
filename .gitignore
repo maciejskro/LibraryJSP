@@ -20,6 +20,7 @@
 hs_err_pid*
 
 target/
+out/
 
 release.properties
 dependency-reduced-pom.xml

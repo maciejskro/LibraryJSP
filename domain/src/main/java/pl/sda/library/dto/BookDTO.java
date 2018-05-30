@@ -1,0 +1,25 @@
+package pl.sda.library.dto;
+
+import org.hibernate.validator.constraints.Length;
+import pl.sda.library.entity.Author;
+import pl.sda.library.entity.BooksType;
+
+import javax.validation.constraints.NotEmpty;
+import java.time.LocalDate;
+
+public class BookDTO {
+
+    private  Long id;
+    @NotEmpty
+    @Length (min =2 , max=50)
+    private  String title;
+
+    private Author autorID;
+    private LocalDate releaseDate;
+    private Integer pages;
+    private String ISBN;
+    private BooksType booksType;
+    private Byte isBorrow;
+    private String description;
+
+}

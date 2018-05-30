@@ -31,7 +31,7 @@ public class BookRepository extends BaseRepository<Book> implements IBaseReposit
 
     @Override
     public List findAll(Order order, String... porpertiesOrder) {
-        return super.findAll( null, null );
+        return super.findAll( null, "was" );
     }
 
     @Override

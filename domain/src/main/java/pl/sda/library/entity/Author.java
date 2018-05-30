@@ -1,6 +1,6 @@
 package pl.sda.library.entity;
 
-import org.mongodb.morphia.annotations.Entity;
+import javax.persistence.Entity;
 
 @Entity
 public class Author extends BaseEntity {

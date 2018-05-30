@@ -1,17 +1,18 @@
 package pl.sda.library.entity;
 
-import org.mongodb.morphia.annotations.Entity;
-import org.mongodb.morphia.annotations.Reference;
 
+
+import javax.persistence.Entity;
+import javax.persistence.ManyToOne;
 import java.time.LocalDate;
 
 @Entity
 public class Borrow extends BaseEntity{
 
     private LocalDate dateOfBorrow;
-    @Reference
+    @ManyToOne
     private Book book;
-    @Reference
+    @ManyToOne
     private Borrower borrower;
 
     public Borrow() {

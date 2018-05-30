@@ -1,19 +1,19 @@
 package pl.sda.library.entity;
 
-import org.bson.types.ObjectId;
-import org.mongodb.morphia.annotations.Id;
+
+import javax.persistence.Id;
 
 public abstract class BaseEntity {
 
     @Id
-    private ObjectId id;
+    private Long id;
     private Long version;
 
-    public ObjectId getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(ObjectId id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

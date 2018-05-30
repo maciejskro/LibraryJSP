@@ -1,9 +1,9 @@
 package pl.sda.library.entity;
 
-import org.mongodb.morphia.annotations.Embedded;
-import org.mongodb.morphia.annotations.Entity;
-import org.mongodb.morphia.annotations.Reference;
 
+
+import javax.persistence.Entity;
+import javax.persistence.OneToOne;
 import java.time.LocalDate;
 
 @Entity
@@ -15,7 +15,7 @@ public class Book extends BaseEntity {
     private BooksType booksType;
     private Integer numberOfPages;
     private String description;
-    @Reference
+    @OneToOne
     private Author autorID;
 
     public Book(){

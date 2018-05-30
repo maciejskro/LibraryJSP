@@ -77,9 +77,6 @@ public abstract class BaseRepository<T>  implements IBaseRepository<T> {
         return result;
     }
 
-
-
-
     public T update (T entity) {
         EntityTransaction et =null;
         try {

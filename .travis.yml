@@ -8,4 +8,4 @@ services:
 
 script:
   - mvn cobertura:cobertura  cobertura:cobertura-integration-test test
-  - bash <(curl -s https://codecov.io/bash) -t fa836755-5af2-43ae-b2b1-2062d8fe41a4
+  - bash <(curl -s https://codecov.io/bash) -t 1iC2Bw6NspnPAM3RKgbHhA

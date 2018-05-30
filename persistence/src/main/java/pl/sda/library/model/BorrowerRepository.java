@@ -1,18 +1,16 @@
 package pl.sda.library.model;
 
-import pl.sda.library.entity.Author;
+import pl.sda.library.entity.Borrower;
 
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
 
-public class AuthorRepository extends BaseRepository<Author> implements IBaseRepository<Author> {
+public class BorrowerRepository extends BaseRepository<Borrower> implements IBaseRepository<Borrower> {
 
     private EntityTransaction et;
 
-    protected AuthorRepository(EntityManagerFactory emf) {
+    BorrowerRepository(EntityManagerFactory emf) {
         super(emf);
         et = em.getTransaction();
     }
-
-
 }

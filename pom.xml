@@ -5,7 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>pl.sda</groupId>
-    <artifactId>library-mega-project</artifactId>
+    <artifactId>library-jsp-mega</artifactId>
     <packaging>pom</packaging>
     <version>1.0-SNAPSHOT</version>
     <modules>
@@ -31,5 +31,6 @@
             <artifactId>mongo-java-driver</artifactId>
             <version>3.4.2</version>
         </dependency>
+        
     </dependencies>
 </project>

@@ -1,6 +1,7 @@
 package pl.sda.library.entity;
 
 import javax.persistence.Entity;
+import java.io.Serializable;
 
 @Entity
 public class Author extends BaseEntity {

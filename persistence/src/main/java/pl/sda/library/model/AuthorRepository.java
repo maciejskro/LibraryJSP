@@ -1,12 +1,14 @@
 package pl.sda.library.model;
 
-import org.mongodb.morphia.Datastore;
+import pl.sda.library.entity.Author;
 
-public class AuthorRepository extends BaseManager {
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
 
-    private Datastore datastore;
+public class AuthorRepository extends BaseRepository<Author, Long> {
 
-    public AuthorRepository() {
-        this.datastore = getDatastore();
+
+    protected AuthorRepository(EntityManagerFactory emf) {
+        super(emf);
     }
 }

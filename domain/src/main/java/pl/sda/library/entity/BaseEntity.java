@@ -1,11 +1,17 @@
 package pl.sda.library.entity;
 
 
+import javax.persistence.Column;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import java.io.Serializable;
 
-public abstract class BaseEntity {
+public abstract class BaseEntity  implements Serializable {
 
     @Id
+    @GeneratedValue(strategy=GenerationType.SEQUENCE)
+    @Column (name = "id")
     private Long id;
     private Long version;
 

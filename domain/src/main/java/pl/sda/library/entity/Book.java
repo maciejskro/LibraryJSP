@@ -10,16 +10,18 @@ import java.time.LocalDate;
 public class Book extends BaseEntity {
 
     private String title;
-    private LocalDate dateOfPublishing;
-    private String isbn;
-    private BooksType booksType;
-    private Integer numberOfPages;
-    private String description;
     @OneToOne
     private Author autorID;
+    private LocalDate releaseDate;
+    private Integer pages;
+    private String ISBN;
+    private BooksType booksType;
+    private Byte isBorrow;
+    private String description;
 
     public Book(){
     }
+
     public String getTitle() {
         return title;
     }
@@ -28,20 +30,36 @@ public class Book extends BaseEntity {
         this.title = title;
     }
 
-    public LocalDate getDateOfPublishing() {
-        return dateOfPublishing;
+    public Author getAutorID() {
+        return autorID;
     }
 
-    public void setDateOfPublishing(LocalDate dateOfPublishing) {
-        this.dateOfPublishing = dateOfPublishing;
+    public void setAutorID(Author autorID) {
+        this.autorID = autorID;
     }
 
-    public String getIsbn() {
-        return isbn;
+    public LocalDate getReleaseDate() {
+        return releaseDate;
     }
 
-    public void setIsbn(String isbn) {
-        this.isbn = isbn;
+    public void setReleaseDate(LocalDate releaseDate) {
+        this.releaseDate = releaseDate;
+    }
+
+    public Integer getPages() {
+        return pages;
+    }
+
+    public void setPages(Integer pages) {
+        this.pages = pages;
+    }
+
+    public String getISBN() {
+        return ISBN;
+    }
+
+    public void setISBN(String ISBN) {
+        this.ISBN = ISBN;
     }
 
     public BooksType getBooksType() {
@@ -52,12 +70,12 @@ public class Book extends BaseEntity {
         this.booksType = booksType;
     }
 
-    public Integer getNumberOfPages() {
-        return numberOfPages;
+    public Byte getIsBorrow() {
+        return isBorrow;
     }
 
-    public void setNumberOfPages(Integer numberOfPages) {
-        this.numberOfPages = numberOfPages;
+    public void setIsBorrow(Byte isBorrow) {
+        this.isBorrow = isBorrow;
     }
 
     public String getDescription() {
@@ -66,13 +84,5 @@ public class Book extends BaseEntity {
 
     public void setDescription(String description) {
         this.description = description;
-    }
-
-    public Author getAutorID() {
-        return autorID;
-    }
-
-    public void setAutorID(Author autorID) {
-        this.autorID = autorID;
     }
 }

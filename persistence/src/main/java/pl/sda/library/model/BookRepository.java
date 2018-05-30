@@ -1,38 +1,49 @@
 package pl.sda.library.model;
 
-import org.mongodb.morphia.Datastore;
-import org.mongodb.morphia.query.Query;
+
 import pl.sda.library.entity.Book;
 
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.EntityTransaction;
 import java.util.List;
 
 
-public class BookRepository extends BaseManager {
+public class BookRepository extends BaseRepository {
 
-    private Datastore datastore;
+    private EntityTransaction et;
 
-    public BookRepository() {
-        super();
-        this.datastore = super.getDatastore();
+    public BookRepository(EntityManagerFactory emf) {
+        super(emf);
     }
 
-    public void save(Book book) {
-        if(book != null) {
-            datastore.save(book);
-        }
+    @Override
+    public Object create(Object entity) {
+        Book book = (Book) entity;
+        super.create(book);
+        return entity;
     }
-    public Book find(Book book) {
-        Query<Book> findOne = getDatastore().createQuery(Book.class).filter("_id",book);
-        return findOne.get();
+
+    public Book find(Long bookId) {
+        return find(bookId);
+
     }
 
     public List<Book> find() {
-        Query<Book> query = getDatastore().createQuery(Book.class);
-        return query.asList();
+        return null;
     }
 
-    public void remove(Book book) {
-        Book remove = find(book);
-        getDatastore().delete(remove);
+
+    @Override
+    public Boolean delete(Object entity) {
+        return super.delete( entity);
+    }
+
+    public Object read(Long id) {
+        return null;
+    }
+
+    @Override
+    public Object update(Object entity) {
+        return null;
     }
 }

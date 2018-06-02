@@ -1,5 +1,6 @@
 package pl.sda.library.controller;
 
+import pl.sda.library.dto.BorrowerDTO;
 import pl.sda.library.service.BorrowerService;
 import pl.sda.library.service.IBorrowerService;
 
@@ -8,6 +9,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
 
@@ -31,13 +33,23 @@ public class AutheticationServlet extends HttpServlet {
         String username = req.getParameter("username");
         String password = req.getParameter("password");
         String lostPass = req.getParameter("lostpass");
+        Boolean lost;
+        try {
+            lost = Boolean.getBoolean(lostPass);
+        } catch (Exception e) {
+            lost = false;
+        }
+        BorrowerDTO user = borrowService.getLoggedUser(username,password,lost);
+        HttpSession session;
+        if (user != null) {
+            session = req.getSession(true);
+            resp.sendRedirect("homeserv.et");
+        } else {
 
-
-
+            resp.sendRedirect("login.jsp");
+        }
         // get all user
         // if contains user then store sesion and redirect homesevlet
         // other retun login_content.jsp with error
-
-
     }
 }

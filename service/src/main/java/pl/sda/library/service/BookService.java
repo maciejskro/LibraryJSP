@@ -8,6 +8,12 @@ import java.util.List;
 
 public class BookService implements IBookService  {
 
+    private IBookService bookService;
+
+    public BookService() {
+        bookService = new BookService();
+    }
+
     @Override
     public void removeBook(Book i) {
 

@@ -1,11 +1,11 @@
 package pl.sda.library.model;
 
 
-import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.EntityTransaction;
-import javax.persistence.Query;
+import javax.persistence.*;
+import javax.persistence.criteria.CriteriaBuilder;
+import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Order;
+import javax.persistence.criteria.Root;
 import java.lang.reflect.ParameterizedType;
 import java.util.ArrayList;
 import java.util.List;
@@ -17,9 +17,9 @@ public abstract class BaseRepository<T>  implements IBaseRepository<T> {
     final EntityManagerFactory emf;
     final Class<T> entityClass;
 
-    BaseRepository(EntityManagerFactory emf) {
+    BaseRepository() {
         ParameterizedType superclass = (ParameterizedType) getClass().getGenericSuperclass();
-        this.emf = emf;
+        this.emf = Persistence.createEntityManagerFactory("persistenceUnitPostgres");
         this.entityClass = (Class<T>) superclass.getActualTypeArguments()[0];
         this.em = emf.createEntityManager();
     }
@@ -45,13 +45,13 @@ public abstract class BaseRepository<T>  implements IBaseRepository<T> {
     }
 
     public List<T> findAll(Order order, String... propertiesOrder ) {
-        /*
+
         CriteriaBuilder criteriaBuilder = em.getCriteriaBuilder();
         CriteriaQuery<T> criteria = criteriaBuilder.createQuery(entityClass);
         Root<T> root = criteria.from(entityClass);
 
         List<Order>  orders = new ArrayList<>();
-        for ( String prop : porpertiesOrder) {
+        for ( String prop : propertiesOrder) {
             if (order.isAscending()) {
                 orders.add(criteriaBuilder.asc(root.get(prop)));
             } else
@@ -59,8 +59,9 @@ public abstract class BaseRepository<T>  implements IBaseRepository<T> {
         }
         criteria.orderBy(orders);
         return em.createQuery(criteria).getResultList();
-        */
 
+    }
+    public List<T> findAll() {
         List<T> result = new ArrayList<>();
         EntityTransaction et = null;
         try {
@@ -109,5 +110,9 @@ public abstract class BaseRepository<T>  implements IBaseRepository<T> {
     public void cleanUp() {
         em.close();
         emf.close();
+    }
+
+    public EntityManager getEm() {
+        return em;
     }
 }

@@ -9,8 +9,8 @@ public class BorrowerRepository extends BaseRepository<Borrower> implements IBas
 
     private EntityTransaction et;
 
-    BorrowerRepository(EntityManagerFactory emf) {
-        super(emf);
+    public BorrowerRepository() {
+        super();
         et = em.getTransaction();
     }
 }

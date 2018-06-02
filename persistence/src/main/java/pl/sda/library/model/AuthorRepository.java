@@ -9,8 +9,8 @@ public class AuthorRepository extends BaseRepository<Author> implements IBaseRep
 
     private EntityTransaction et;
 
-    protected AuthorRepository(EntityManagerFactory emf) {
-        super(emf);
+    protected AuthorRepository() {
+        super();
         et = em.getTransaction();
     }
 

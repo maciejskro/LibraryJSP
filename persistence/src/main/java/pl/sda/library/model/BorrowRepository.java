@@ -9,8 +9,8 @@ public class BorrowRepository extends BaseRepository<Borrow> implements IBaseRep
 
     private EntityTransaction et;
 
-    BorrowRepository(EntityManagerFactory emf) {
-        super(emf);
+    BorrowRepository() {
+        super();
         this.et = em.getTransaction();
     }
 }

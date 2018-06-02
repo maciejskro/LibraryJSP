@@ -13,8 +13,8 @@ public class BookRepository extends BaseRepository<Book> implements IBaseReposit
 
     private EntityTransaction et;
 
-    public BookRepository(EntityManagerFactory emf) {
-        super(emf);
+    public BookRepository() {
+        super();
         this.et = em.getTransaction();
     }
 
@@ -30,8 +30,13 @@ public class BookRepository extends BaseRepository<Book> implements IBaseReposit
     }
 
     @Override
-    public List findAll(Order order, String... porpertiesOrder) {
-        return super.findAll( null, "was" );
+    public List<Book> findAll(Order order, String... porpertiesOrder) {
+        return super.findAll( order, porpertiesOrder );
+    }
+
+    @Override
+    public List<Book> findAll() {
+        return super.findAll();
     }
 
     @Override

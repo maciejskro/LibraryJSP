@@ -29,7 +29,7 @@ public class HomeServlet extends HttpServlet {
             req.setAttribute("books" , bookService.findAll());
             req.getRequestDispatcher("index.jsp").forward(req, resp);
         } else  {
-            req.getRequestDispatcher("login_content.jsp").forward(req,resp);
+            req.getRequestDispatcher("login.jsp").forward(req,resp);
         }
     }
 

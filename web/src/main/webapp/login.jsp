@@ -17,7 +17,7 @@
 
 </head>
 <body>
-<div class="container justify-content-center mt-auto">
+<div class="container justify-content-center mt-3">
     <div class="row align-content-center ">
         <div class="col-12">
             <jsp:include page="WEB-INF/headers.jsp" />

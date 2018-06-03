@@ -1,5 +1,7 @@
 package pl.sda.library.dto;
 
+import lombok.Getter;
+import lombok.Setter;
 import org.hibernate.validator.constraints.Length;
 import pl.sda.library.entity.Author;
 import pl.sda.library.entity.BooksType;
@@ -7,6 +9,8 @@ import pl.sda.library.entity.BooksType;
 import javax.validation.constraints.NotEmpty;
 import java.time.LocalDate;
 
+@Getter
+@Setter
 public class BookDTO {
 
     private  Long id;

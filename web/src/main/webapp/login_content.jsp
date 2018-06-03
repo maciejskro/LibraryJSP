@@ -10,7 +10,7 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 
 <div class="form-control">
-    <form action="authenticate" method="post">
+    <form action="/authenticate" method="post">
         <div class="form-group">
             <label for="usernameInput">Username</label>
             <input type="text" class="text-secondary" name="username" aria-labelledby="usernameInput"

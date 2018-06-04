@@ -1,17 +1,13 @@
 package pl.sda.library.entity;
 
 
-
-import lombok.Getter;
-import lombok.Setter;
-
 import javax.persistence.*;
-import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.List;
 
 @Entity
-public class Book extends BaseEntity implements Serializable {
+@Table(name="book")
+public class Book extends BaseEntity {
 
     private String title;
     @ManyToOne

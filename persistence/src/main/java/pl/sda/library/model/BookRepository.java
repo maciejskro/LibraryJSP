@@ -3,7 +3,6 @@ package pl.sda.library.model;
 
 import pl.sda.library.entity.Book;
 
-import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
 import javax.persistence.criteria.Order;
 import java.util.List;
@@ -15,7 +14,7 @@ public class BookRepository extends BaseRepository<Book> implements IBaseReposit
 
     public BookRepository() {
         super();
-        this.et = em.getTransaction();
+      //  this.et = em.getTransaction();
     }
 
     @Override

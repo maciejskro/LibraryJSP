@@ -2,8 +2,8 @@ package pl.sda.library.dto;
 
 import lombok.Getter;
 import lombok.Setter;
-import pl.sda.library.entity.Book;
-import pl.sda.library.entity.Borrower;
+//import Book;
+//import Borrower;
 
 import java.time.LocalDate;
 
@@ -12,6 +12,6 @@ import java.time.LocalDate;
 public class BorrowDTO {
 
     private LocalDate dateOfBorrow;
-    private Book book;
-    private Borrower borrower;
+//    private Book book;
+//    private Borrower borrower;
 }

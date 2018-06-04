@@ -2,17 +2,16 @@ package pl.sda.library.entity;
 
 
 import javax.persistence.*;
-import java.io.Serializable;
 import java.util.List;
 
 @Entity
-@Table(name = "borrower")
-public class Borrower extends BaseEntity implements Serializable {
+@Table(name="borrower")
+public class Borrower extends BaseEntity {
 
     private String firstName;
     private String lastName;
     private String username;
-    private String password;
+    private String passwd;
     @OneToOne
     @JoinColumn(name = "id")
     private BorrowerDetail borrowerDetail;
@@ -56,12 +55,12 @@ public class Borrower extends BaseEntity implements Serializable {
         this.username = username;
     }
 
-    public String getPassword() {
-        return password;
+    public String getPasswd() {
+        return passwd;
     }
 
-    public void setPassword(String password) {
-        this.password = password;
+    public void setPasswd(String password) {
+        this.passwd = password;
     }
 
     public BorrowerDetail getBorrowerDetail() {

@@ -13,7 +13,7 @@
 
 <%-- w przypadku różnicy nazw --%>
 <jsp:setProperty name="user" property="username" param="username" />
-<jsp:setProperty name="user" property="password" param="password" />
+<jsp:setProperty name="user" property="passwd" param="password" />
 <jsp:setProperty name="user" property="lostpassword" param="lostpass" />
 
 <%--jeżeli chcemy przypisać stałe wartości--%>

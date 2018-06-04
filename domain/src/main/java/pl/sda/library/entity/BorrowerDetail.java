@@ -1,15 +1,12 @@
 package pl.sda.library.entity;
 
-import lombok.Getter;
-import lombok.Setter;
-
 import javax.persistence.Entity;
-import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
-import java.io.Serializable;
+import javax.persistence.Table;
 
 @Entity
-public class BorrowerDetail extends BaseEntity implements Serializable {
+@Table(name="borrowerDetail")
+public class BorrowerDetail extends BaseEntity {
 
     private String address;
     private String city;

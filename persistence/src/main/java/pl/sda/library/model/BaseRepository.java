@@ -13,28 +13,29 @@ import java.util.List;
 public abstract class BaseRepository<T>  implements IBaseRepository<T> {
 
 
-    final EntityManager em;
-    final EntityManagerFactory emf;
+    @PersistenceContext(unitName = "persistenceUnitPostgres")
+     EntityManager em;
+    //final EntityManagerFactory emf;
     final Class<T> entityClass;
 
     BaseRepository() {
         ParameterizedType superclass = (ParameterizedType) getClass().getGenericSuperclass();
-        this.emf = Persistence.createEntityManagerFactory("persistenceUnitPostgres");
+        //this.emf = Persistence.createEntityManagerFactory("persistenceUnitPostgres");
         this.entityClass = (Class<T>) superclass.getActualTypeArguments()[0];
-        this.em = emf.createEntityManager();
+       // this.em = emf.createEntityManager();
     }
 
     public T create(T entity) {
         EntityTransaction et = null;
         try {
-            et =em.getTransaction();
-            et.begin();
+            //et =em.getTransaction();
+            //et.begin();
             em.persist(entity);
-            et.commit();
+            //et.commit();
         } catch ( Exception e) {
-            if(et != null) {
-                et.rollback();
-            }
+           // if(et != null) {
+            //    et.rollback();
+           // }
         }
         return entity;
     }
@@ -65,15 +66,16 @@ public abstract class BaseRepository<T>  implements IBaseRepository<T> {
         List<T> result = new ArrayList<>();
         EntityTransaction et = null;
         try {
-            et = em.getTransaction();
-            et.begin();
+            //et = em.getTransaction();
+            //et.begin();
             Query q = em.createQuery("select o from " + entityClass.getSimpleName() + " o");
             result = q.getResultList();
-            et.commit();
+            //et.commit();
         } catch (Exception e) {
-            if( et !=null) {
-                et.rollback();
-            }
+           // if( et !=null) {
+           //     et.rollback();
+           // }
+            result = null;
         }
         return result;
     }
@@ -109,7 +111,7 @@ public abstract class BaseRepository<T>  implements IBaseRepository<T> {
     }
     public void cleanUp() {
         em.close();
-        emf.close();
+        //emf.close();
     }
 
     public EntityManager getEm() {

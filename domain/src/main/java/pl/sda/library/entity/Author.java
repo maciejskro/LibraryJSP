@@ -3,12 +3,11 @@ package pl.sda.library.entity;
 import javax.persistence.Entity;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
-import java.io.Serializable;
 import java.util.List;
 
 @Entity
-@Table(name = "author")
-public class Author extends BaseEntity implements Serializable {
+@Table(name="author")
+public class Author extends BaseEntity{
 
     private String firstname;
     private String lastname;

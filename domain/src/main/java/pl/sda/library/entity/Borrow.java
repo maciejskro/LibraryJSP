@@ -4,11 +4,12 @@ package pl.sda.library.entity;
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import java.io.Serializable;
+import javax.persistence.Table;
 import java.time.LocalDate;
 
 @Entity
-public class Borrow extends BaseEntity implements Serializable {
+@Table(name="borrow")
+public class Borrow extends BaseEntity {
 
     private LocalDate dateOfBorrow;
     @ManyToOne

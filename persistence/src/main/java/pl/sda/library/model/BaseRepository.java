@@ -67,7 +67,7 @@ public abstract class BaseRepository<T>  implements IBaseRepository<T> {
         try {
             et = em.getTransaction();
             et.begin();
-            Query q = em.createQuery("select o from " + entityClass.getName() + " o");
+            Query q = em.createQuery("select o from " + entityClass.getSimpleName() + " o");
             result = q.getResultList();
             et.commit();
         } catch (Exception e) {

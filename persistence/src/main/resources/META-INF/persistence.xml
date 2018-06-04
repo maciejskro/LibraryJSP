@@ -5,16 +5,18 @@
              version="2.1">
     <persistence-unit name="persistenceUnitPostgres"
                       transaction-type="RESOURCE_LOCAL">
-        <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
         <properties>
+            <property name="javax.persistence.jdbc.driver" value="org.postgresql.Driver" />
             <property name="javax.persistence.jdbc.url" value="jdbc:postgresql://localhost:5432/library" />
             <property name="javax.persistence.jdbc.user" value="csgo" />
             <property name="javax.persistence.jdbc.password" value="Start123$" />
-            <property name="javax.persistence.jdbc.driver" value="org.postgresql.Driver" />
             <property name="javax.persistence.schema-generation.database.action" value="drop-and-create"/>
+
             <property name="hibernate.dialect" value="org.hibernate.dialect.PostgreSQL95Dialect"/>
             <property name="hibernate.hbm2ddl.auto" value="create-drop"/>
+
             <property name="hibernate.show_sql" value = "true" />
+            <property name="hibernate.format_sql" value="true"/>
         </properties>
     </persistence-unit>
 </persistence>

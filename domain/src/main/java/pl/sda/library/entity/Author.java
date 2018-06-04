@@ -1,14 +1,20 @@
 package pl.sda.library.entity;
 
 import javax.persistence.Entity;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
+import java.io.Serializable;
+import java.util.List;
 
 @Entity
-public class Author extends BaseEntity {
+@Table(name = "author")
+public class Author extends BaseEntity implements Serializable {
 
     private String firstname;
     private String lastname;
     private String placeOfBorn;
-
+    @OneToMany
+    private List<Book> book;
 
     public Author() {
         super();
@@ -43,5 +49,13 @@ public class Author extends BaseEntity {
 
     public void setPlaceOfBorn(String placeOfBorn) {
         this.placeOfBorn = placeOfBorn;
+    }
+
+    public List<Book> getBook() {
+        return book;
+    }
+
+    public void setBook(List<Book> book) {
+        this.book = book;
     }
 }

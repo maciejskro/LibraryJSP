@@ -9,7 +9,7 @@ public abstract class BaseEntity  implements Serializable {
 
     @Id
     @GeneratedValue(strategy=GenerationType.SEQUENCE)
-    @Column (name = "id")
+    @Column (name = "id" , updatable = false, nullable = false)
     private Long id;
     private Long version;
 

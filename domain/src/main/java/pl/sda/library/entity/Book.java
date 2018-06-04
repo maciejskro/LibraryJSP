@@ -2,15 +2,20 @@ package pl.sda.library.entity;
 
 
 
-import javax.persistence.Entity;
-import javax.persistence.OneToOne;
+import lombok.Getter;
+import lombok.Setter;
+
+import javax.persistence.*;
+import java.io.Serializable;
 import java.time.LocalDate;
+import java.util.List;
 
 @Entity
-public class Book extends BaseEntity {
+public class Book extends BaseEntity implements Serializable {
 
     private String title;
-    @OneToOne
+    @ManyToOne
+    @JoinColumn(name = "id")
     private Author autorID;
     private LocalDate releaseDate;
     private Integer pages;
@@ -19,8 +24,23 @@ public class Book extends BaseEntity {
     private Byte isBorrow;
     private String description;
 
+    @OneToMany(mappedBy = "book")
+    public List<Borrow> borrowList;
+
+
     public Book(){
         super();
+
+    }
+
+    @Override
+    public Long getId() {
+        return super.getId();
+    }
+
+    @Override
+    public void setId(Long id) {
+        super.setId(id);
     }
 
     public String getTitle() {
@@ -85,5 +105,13 @@ public class Book extends BaseEntity {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public List<Borrow> getBorrowList() {
+        return borrowList;
+    }
+
+    public void setBorrowList(List<Borrow> borrowList) {
+        this.borrowList = borrowList;
     }
 }

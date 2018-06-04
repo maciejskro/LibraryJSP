@@ -19,13 +19,6 @@ public class Author extends BaseEntity{
         super();
     }
 
-    public Long getId() {
-        return super.getId();
-    }
-    public void setId(Long id) {
-        super.setId(id);
-    }
-
     public String getFirstname() {
         return firstname;
     }

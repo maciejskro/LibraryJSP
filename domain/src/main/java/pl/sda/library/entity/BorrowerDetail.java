@@ -19,16 +19,6 @@ public class BorrowerDetail extends BaseEntity {
         super();
     }
 
-    @Override
-    public Long getId() {
-        return super.getId();
-    }
-
-    @Override
-    public void setId(Long id) {
-        super.setId(id);
-    }
-
     public String getAddress() {
         return address;
     }

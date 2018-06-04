@@ -8,7 +8,7 @@ public class BaseEntity {
 
     @Id
     @GeneratedValue(strategy=GenerationType.SEQUENCE)
-    @Column (name = "id" , updatable = false, nullable = false)
+    @Column (name = "id" , updatable = false, nullable = false, insertable = false)
     private Long id;
 
     public Long getId() {

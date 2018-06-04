@@ -12,17 +12,20 @@ import java.util.List;
 
 public abstract class BaseRepository<T>  implements IBaseRepository<T> {
 
+    public static final String PERSISTENCE_NAME= "persistenceUnitPostgres";
 
-    @PersistenceContext(unitName = "persistenceUnitPostgres")
-     EntityManager em;
-    //final EntityManagerFactory emf;
-    final Class<T> entityClass;
+    //@PersistenceContext(unitName = "persistenceUnitPostgres")
+    protected EntityManager em;
+    protected static EntityManagerFactory emf;
+    protected Class<T> entityClass;
 
-    BaseRepository() {
+    protected BaseRepository() {
         ParameterizedType superclass = (ParameterizedType) getClass().getGenericSuperclass();
-        //this.emf = Persistence.createEntityManagerFactory("persistenceUnitPostgres");
+        if (emf == null) {
+            this.emf = Persistence.createEntityManagerFactory(PERSISTENCE_NAME);
+        }
         this.entityClass = (Class<T>) superclass.getActualTypeArguments()[0];
-       // this.em = emf.createEntityManager();
+        this.em = emf.createEntityManager();
     }
 
     public T create(T entity) {
@@ -66,16 +69,15 @@ public abstract class BaseRepository<T>  implements IBaseRepository<T> {
         List<T> result = new ArrayList<>();
         EntityTransaction et = null;
         try {
-            //et = em.getTransaction();
-            //et.begin();
+            et = em.getTransaction();
+            et.begin();
             Query q = em.createQuery("select o from " + entityClass.getSimpleName() + " o");
             result = q.getResultList();
-            //et.commit();
+            et.commit();
         } catch (Exception e) {
-           // if( et !=null) {
-           //     et.rollback();
-           // }
-            result = null;
+            if( et !=null) {
+                et.rollback();
+            }
         }
         return result;
     }

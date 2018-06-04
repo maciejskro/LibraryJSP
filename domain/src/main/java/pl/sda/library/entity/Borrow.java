@@ -24,16 +24,6 @@ public class Borrow extends BaseEntity {
         super();
     }
 
-    @Override
-    public Long getId() {
-        return super.getId();
-    }
-
-    @Override
-    public void setId(Long id) {
-        super.setId(id);
-    }
-
     public LocalDate getDateOfBorrow() {
         return dateOfBorrow;
     }

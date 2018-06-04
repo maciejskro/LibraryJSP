@@ -23,14 +23,6 @@ public class Borrower extends BaseEntity {
     }
 
 
-    public Long getId() {
-        return super.getId();
-    }
-
-    public void setId(Long id) {
-        super.setId(id);
-    }
-
     public String getFirstName() {
         return firstName;
     }

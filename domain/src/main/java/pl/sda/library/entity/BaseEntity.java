@@ -2,13 +2,14 @@ package pl.sda.library.entity;
 
 
 import javax.persistence.*;
+import java.io.Serializable;
 
 @MappedSuperclass
-public class BaseEntity {
+public class BaseEntity implements Serializable {
 
     @Id
     @GeneratedValue(strategy=GenerationType.SEQUENCE)
-    @Column (name = "id" , updatable = false, nullable = false, insertable = false)
+    @Column (name = "id" , updatable = false, nullable = false)
     private Long id;
 
     public Long getId() {

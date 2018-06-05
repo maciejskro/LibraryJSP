@@ -20,30 +20,30 @@ import java.util.List;
 public abstract class BaseRepository<T>  implements IBaseRepository<T> {
 
     public static final String PERSISTENCE_NAME= "persistenceUnitPostgres";
-    private static final SessionFactory SESSION_FACTORY;
+    //private static final SessionFactory SESSION_FACTORY;
 
     //@PersistenceContext(unitName = "persistenceUnitPostgres")
     protected EntityManager em;
-    //protected static EntityManagerFactory emf;
+    protected static EntityManagerFactory emf;
     protected Class<T> entityClass;
 
-    static {
-        try{
-            StandardServiceRegistry serviceRegistry = new StandardServiceRegistryBuilder().configure().build();
-            Metadata metaData = new MetadataSources(serviceRegistry).getMetadataBuilder().build();
-            SESSION_FACTORY = metaData.getSessionFactoryBuilder().build();
-        } catch (Exception e) {
-            throw new ExceptionInInitializerError("Erorr in initilaize session");
-        }
-    }
+//    static {
+//        try{
+//            StandardServiceRegistry serviceRegistry = new StandardServiceRegistryBuilder().configure().build();
+//            Metadata metaData = new MetadataSources(serviceRegistry).getMetadataBuilder().build();
+//            SESSION_FACTORY = metaData.getSessionFactoryBuilder().build();
+//        } catch (Exception e) {
+//            throw new ExceptionInInitializerError("Erorr in initilaize session");
+//        }
+//    }
 
     protected BaseRepository() {
         ParameterizedType superclass = (ParameterizedType) getClass().getGenericSuperclass();
-//        if (emf == null) {
-//            this.emf = Persistence.createEntityManagerFactory(PERSISTENCE_NAME);
-//        }
+        if (emf == null) {
+            this.emf = Persistence.createEntityManagerFactory(PERSISTENCE_NAME);
+        }
         this.entityClass = (Class<T>) superclass.getActualTypeArguments()[0];
-//        this.em = emf.createEntityManager();
+        this.em = emf.createEntityManager();
     }
 
     public T create(T entity) {

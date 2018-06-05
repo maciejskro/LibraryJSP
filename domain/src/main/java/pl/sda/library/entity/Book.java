@@ -11,7 +11,7 @@ public class Book extends BaseEntity {
 
     private String title;
     @ManyToOne
-    @JoinColumn(name = "id")
+    @JoinColumn(name = "author_id" , referencedColumnName = "id")
     private Author autorID;
     private LocalDate releaseDate;
     private Integer pages;

@@ -18,9 +18,6 @@
             <property name="javax.persistence.jdbc.password" value="Start123$"/>
             <property name="javax.persistence.schema-generation.database.action" value="drop-and-create"/>
             <property name="hibernate.dialect" value="org.hibernate.dialect.PostgresPlusDialect"/>
-            <property name="hibernate.hbm2ddl.auto" value="create"/>
-            <property name="hibernate.connection.driver_class" value="org.postgresql.Drive"/>
-            <!--<property name="hibernate.archive.autodetection" value="class, hbm"/>-->
             <property name="hibernate.show_sql" value="true"/>
             <property name="hibernate.format_sql" value="true"/>
         </properties>

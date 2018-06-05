@@ -9,20 +9,20 @@ import java.util.List;
 @Table(name="book")
 public class Book extends BaseEntity {
 
-    private String title;
-    @ManyToOne
-    @JoinColumn(name = "author_id" , referencedColumnName = "id")
-    private Author autorID;
-    private LocalDate releaseDate;
-    private Integer pages;
     private String ISBN;
+    @Enumerated(EnumType.STRING)
     private BooksType booksType;
-    private Byte isBorrow;
     private String description;
+    private Byte isBorrow;
+    private Integer pages;
+    private LocalDate releaseDate;
+    private String title;
+
+    @ManyToMany
+    private List<Author> authors;
 
     @OneToMany(mappedBy = "book")
     public List<Borrow> borrowList;
-
 
     public Book(){
         super();
@@ -37,12 +37,12 @@ public class Book extends BaseEntity {
         this.title = title;
     }
 
-    public Author getAutorID() {
-        return autorID;
+    public List<Author> getAuthors() {
+        return authors;
     }
 
-    public void setAutorID(Author autorID) {
-        this.autorID = autorID;
+    public void setAuthors(List<Author> autorID) {
+        this.authors = autorID;
     }
 
     public LocalDate getReleaseDate() {

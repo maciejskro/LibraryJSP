@@ -8,8 +8,8 @@ import java.io.Serializable;
 public class BaseEntity implements Serializable {
 
     @Id
-    @GeneratedValue(strategy=GenerationType.SEQUENCE)
-    @Column (name = "id" , updatable = false, nullable = false)
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
+    @Column(name = "id", nullable = false)
     private Long id;
 
     public Long getId() {

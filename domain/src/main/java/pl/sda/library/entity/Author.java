@@ -1,7 +1,7 @@
 package pl.sda.library.entity;
 
 import javax.persistence.Entity;
-import javax.persistence.OneToMany;
+import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 import java.util.List;
 
@@ -12,7 +12,8 @@ public class Author extends BaseEntity{
     private String firstname;
     private String lastname;
     private String placeOfBorn;
-    @OneToMany
+
+    @ManyToMany(mappedBy = "authors")
     private List<Book> book;
 
     public Author() {
@@ -49,5 +50,9 @@ public class Author extends BaseEntity{
 
     public void setBook(List<Book> book) {
         this.book = book;
+    }
+
+    public String getAuthorName() {
+        return firstname + " " + lastname;
     }
 }

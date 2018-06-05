@@ -43,9 +43,10 @@ public class AutheticationServlet extends HttpServlet {
         }
         BorrowerDTO user = borrowService.getLoggedUser(username,password,lost);
         HttpSession session;
-        if (user != null) {
+        if (user != null && username.equals(user.getUsername()) & password.equals(user.getPassword())) {
             session = req.getSession(true);
-            resp.sendRedirect("homeservlet");
+            //req.getRequestDispatcher("/homeservlet").forward(req,resp);
+            resp.sendRedirect("/homeservlet");
         } else {
 
             resp.sendRedirect("login.jsp");

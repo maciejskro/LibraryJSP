@@ -1,13 +1,6 @@
 package pl.sda.library.model;
 
 
-import org.hibernate.SessionFactory;
-import org.hibernate.boot.Metadata;
-import org.hibernate.boot.MetadataSources;
-import org.hibernate.boot.registry.StandardServiceRegistry;
-import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
-
-
 import javax.persistence.*;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
@@ -27,15 +20,7 @@ public abstract class BaseRepository<T>  implements IBaseRepository<T> {
     protected static EntityManagerFactory emf;
     protected Class<T> entityClass;
 
-//    static {
-//        try{
-//            StandardServiceRegistry serviceRegistry = new StandardServiceRegistryBuilder().configure().build();
-//            Metadata metaData = new MetadataSources(serviceRegistry).getMetadataBuilder().build();
-//            SESSION_FACTORY = metaData.getSessionFactoryBuilder().build();
-//        } catch (Exception e) {
-//            throw new ExceptionInInitializerError("Erorr in initilaize session");
-//        }
-//    }
+
 
     protected BaseRepository() {
         ParameterizedType superclass = (ParameterizedType) getClass().getGenericSuperclass();
@@ -49,14 +34,14 @@ public abstract class BaseRepository<T>  implements IBaseRepository<T> {
     public T create(T entity) {
         EntityTransaction et = null;
         try {
-            //et =em.getTransaction();
-            //et.begin();
+            et =em.getTransaction();
+            et.begin();
             em.persist(entity);
-            //et.commit();
+            et.commit();
         } catch ( Exception e) {
-           // if(et != null) {
-            //    et.rollback();
-           // }
+            if(et != null) {
+               et.rollback();
+            }
         }
         return entity;
     }

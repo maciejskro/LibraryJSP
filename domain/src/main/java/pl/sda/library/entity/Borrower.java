@@ -15,6 +15,7 @@ public class Borrower extends BaseEntity {
     @OneToOne
     @JoinColumn(name = "id")
     private BorrowerDetail borrowerDetail;
+
     @OneToMany(mappedBy = "borrower")
     private List<Borrow> borrowList;
 

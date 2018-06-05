@@ -8,7 +8,8 @@ public enum BooksType {
     TRAVEL("Travel"),
     SCIENCE("Science"),
     HISTORY("History"),
-    FANTASY("Fantasy");
+    FANTASY("Fantasy"),
+    POEM("Poema");
 
     private String description;
     public String getDescription() {

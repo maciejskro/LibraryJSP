@@ -12,7 +12,7 @@ public class BorrowerDetail extends BaseEntity {
     private String city;
     private String email;
     private String phoneNo;
-    @OneToOne (mappedBy = "borrowerDetail")
+    @OneToOne
     private Borrower borrower;
 
     public BorrowerDetail() {

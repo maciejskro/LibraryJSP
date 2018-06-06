@@ -8,7 +8,7 @@ public class BorrowerDetailRepository extends BaseRepository<BorrowerDetail> imp
 
     private EntityTransaction et;
 
-    BorrowerDetailRepository() {
+    public BorrowerDetailRepository() {
         super();
       //  et = em.getTransaction();
     }

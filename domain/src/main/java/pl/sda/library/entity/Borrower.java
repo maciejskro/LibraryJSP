@@ -8,11 +8,13 @@ import java.util.List;
 @Table(name="borrower")
 public class Borrower extends BaseEntity {
 
+    @Column(name = "first_name")
     private String firstName;
+    @Column(name = "last_name")
     private String lastName;
     private String username;
     private String passwd;
-    @OneToOne
+    @OneToOne(mappedBy = "borrower")
     @JoinColumn(name = "id")
     private BorrowerDetail borrowerDetail;
 

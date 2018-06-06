@@ -28,15 +28,8 @@ public class HomeServlet extends HttpServlet {
         HttpSession session = req.getSession(false);
         List<BookDTO> books = bookService.findAll();
         req.setAttribute("books" , books);
-        req.getRequestDispatcher("booktable.jsp").forward(req,resp);
-//        if (session != null ) {
-//            req.setAttribute("books" , bookService.findAll());
-//            req.getRequestDispatcher("index.jsp").forward(req, resp);
-//        } else  {
-//            req.getRequestDispatcher("login.jsp").forward(req,resp);
-//        }
-
-
+        //req.setAttribute("logeduser" , session.getAttribute("logeduser"));
+        req.getRequestDispatcher("book.jsp").forward(req,resp);
     }
 
     @Override
@@ -45,6 +38,7 @@ public class HomeServlet extends HttpServlet {
        // req.getParameter("action");
 
         HttpSession session = req.getSession();
+        String action = req.getParameter("action");
         BorrowerDTO user = (BorrowerDTO) session.getAttribute("logeduser");
         resp.sendRedirect("/homeservlet");
 

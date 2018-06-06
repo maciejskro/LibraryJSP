@@ -8,7 +8,7 @@ public class BorrowRepository extends BaseRepository<Borrow> implements IBaseRep
 
     private EntityTransaction et;
 
-    BorrowRepository() {
+    public BorrowRepository() {
         super();
        // this.et = em.getTransaction();
     }

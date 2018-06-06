@@ -7,7 +7,13 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <footer>
-    <div>
-        Library suprer application
+
+    <style>
+        footer { color: dimgray;
+                font-size: small;}
+    </style>
+    <div class="modal-footer">
+        Library suprer application <br/>
+        Copyright (R) Maciej Skrobiszewski
     </div>
 </footer>

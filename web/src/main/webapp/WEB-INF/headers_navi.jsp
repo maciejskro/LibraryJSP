@@ -8,9 +8,10 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
 <header>
+
     <div class="header-panel modal-header">
     <h2 class="h2 header-panel">
         Super Library Application
-    </h2>
+    </h2
     </div>
 </header>

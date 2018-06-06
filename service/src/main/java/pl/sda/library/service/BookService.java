@@ -35,8 +35,10 @@ public class BookService implements IBookService  {
         List<Book> bookList = bookRepository.findAll();
 
         return bookList.stream()
-                .map( b -> new BookDTO(b.getId(), b.getTitle() ,b.getAuthors().toString() ,b.getReleaseDate(), b.getPages()
-                                    , b.getISBN(), b.getBooksType().toString(), b.getIsBorrow(), b.getDescription() , "sldk") )
+                .map( b -> { BookDTO bdto = new BookDTO(b.getId(), b.getTitle() ,"" ,b.getReleaseDate(), b.getPages()
+                                    , b.getISBN(), b.getBooksType().getDescription(), b.getIsBorrow(), b.getDescription() , "sldk");
+                            bdto.getAuthors(b.getAuthors());
+                            return bdto; } )
                 .collect(Collectors.toList());
     }
 

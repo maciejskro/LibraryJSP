@@ -24,9 +24,7 @@ public class AutheticationServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        //if (req.getSession(false) == null) {
             resp.sendRedirect("login.jsp");
-        //}
     }
 
     @Override
@@ -45,10 +43,10 @@ public class AutheticationServlet extends HttpServlet {
         HttpSession session;
         if (user != null && username.equals(user.getUsername()) & password.equals(user.getPassword())) {
             session = req.getSession(true);
+            req.setAttribute("user",user);
             //req.getRequestDispatcher("/homeservlet").forward(req,resp);
             resp.sendRedirect("/homeservlet");
         } else {
-
             resp.sendRedirect("login.jsp");
         }
         // get all user

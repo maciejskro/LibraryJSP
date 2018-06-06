@@ -13,7 +13,7 @@ public class Book extends BaseEntity {
     @Enumerated(EnumType.STRING)
     private BooksType booksType;
     private String description;
-    private Byte isBorrow;
+    private Boolean isBorrow;
     private Integer pages;
     private LocalDate releaseDate;
     private String title;
@@ -26,7 +26,6 @@ public class Book extends BaseEntity {
 
     public Book(){
         super();
-
     }
 
     public String getTitle() {
@@ -77,11 +76,11 @@ public class Book extends BaseEntity {
         this.booksType = booksType;
     }
 
-    public Byte getIsBorrow() {
+    public Boolean getIsBorrow() {
         return isBorrow;
     }
 
-    public void setIsBorrow(Byte isBorrow) {
+    public void setIsBorrow(Boolean isBorrow) {
         this.isBorrow = isBorrow;
     }
 
@@ -100,4 +99,5 @@ public class Book extends BaseEntity {
     public void setBorrowList(List<Borrow> borrowList) {
         this.borrowList = borrowList;
     }
+
 }

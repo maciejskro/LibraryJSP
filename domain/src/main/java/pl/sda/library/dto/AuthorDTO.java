@@ -19,4 +19,7 @@ public class AuthorDTO {
 
     private String placeOfBorn;
 
+    public String getAuthorName() {
+        return firstname + " " + lastname;
+    }
 }

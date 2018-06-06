@@ -13,19 +13,22 @@
                 <thead>
                 <th>Lp.</th>
                 <th>Title</th>
+                <th>Authors</th>
                 <th>ISBN</th>
                 <th>Category</th>
                 <th>Release</th>
                 <th>Pages</th>
-                <th>Author</th>
                 </thead>
                 <tbody>
-                 <c:forEach items="${requestScope.book}" var="book" varStatus="loop">
+                 <c:forEach items="${requestScope.books}" var="book" varStatus="loop">
                      <tr>
-                         <td>${loop.index +1 }  </td>
+                         <td>${loop.index+1}  </td>
                          <td>${book.title}</td>
                          <td>${book.authorName}</td>
-
+                         <td>${book.ISBN}</td>
+                         <td>${book.booksType}</td>
+                         <td>${book.releaseDate}</td>
+                         <td>sd</td>
                      </tr>
                  </c:forEach>
                 </tbody>

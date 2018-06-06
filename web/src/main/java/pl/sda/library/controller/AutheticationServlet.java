@@ -24,7 +24,13 @@ public class AutheticationServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-            resp.sendRedirect("login.jsp");
+            HttpSession session = req.getSession(false);
+            if (session == null) {
+                resp.sendRedirect("login.jsp");
+            } else {
+                req.getRequestDispatcher("/homeservlet").forward(req, resp);
+            }
+
     }
 
     @Override

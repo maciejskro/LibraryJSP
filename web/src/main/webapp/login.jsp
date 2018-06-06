@@ -11,14 +11,16 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <html>
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1 shrink-to-fit=no">
     <title>Start application</title>
-    <link rel="stylesheet" href="webjars/bootstrap/4.1.0/css/bootstrap.min.css"/>
     <link rel="script" href="webjars/jquery/3.3.1/jquery.min.js"/>
     <link rel="script" href="webjars/bootstrap/4.1.0/js/bootstrap.bundle.min.js"/>
-    <link rel="stylesheet" href="webjars/popper.js"/>
-    <link rel="stylesheet" href="webjars/bootstrap/4.1.0/css/bootstrap-grid.min-jsf.css"/>
+    <link rel="stylesheet" href="webjars/bootstrap/4.1.0/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="webjars/bootstrap/4.1.0/css/bootstrap-grid.min.css"/>
 </head>
 <body>
+<link rel="script" href="webjars/bootstrap/4.1.0/webjars-requirejs.js"/>
 <div class="container justify-content-center mt-3">
     <div class="row align-content-center ">
         <div class="col-12">

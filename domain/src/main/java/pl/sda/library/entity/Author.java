@@ -1,17 +1,23 @@
 package pl.sda.library.entity;
 
 import javax.persistence.Entity;
-import java.io.Serializable;
+import javax.persistence.ManyToMany;
+import javax.persistence.Table;
+import java.util.List;
 
 @Entity
-public class Author extends BaseEntity {
+@Table(name="author")
+public class Author extends BaseEntity{
 
     private String firstname;
-    private String name;
+    private String lastname;
     private String placeOfBorn;
 
+    @ManyToMany(mappedBy = "authors")
+    private List<Book> book;
 
     public Author() {
+        super();
     }
 
     public String getFirstname() {
@@ -22,12 +28,12 @@ public class Author extends BaseEntity {
         this.firstname = firstname;
     }
 
-    public String getName() {
-        return name;
+    public String getLastname() {
+        return lastname;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setLastname(String lastname) {
+        this.lastname = lastname;
     }
 
     public String getPlaceOfBorn() {
@@ -36,5 +42,17 @@ public class Author extends BaseEntity {
 
     public void setPlaceOfBorn(String placeOfBorn) {
         this.placeOfBorn = placeOfBorn;
+    }
+
+    public List<Book> getBook() {
+        return book;
+    }
+
+    public void setBook(List<Book> book) {
+        this.book = book;
+    }
+
+    public String getAuthorName() {
+        return firstname + " " + lastname;
     }
 }

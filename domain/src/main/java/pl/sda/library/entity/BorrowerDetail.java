@@ -1,14 +1,19 @@
 package pl.sda.library.entity;
 
 import javax.persistence.Entity;
+import javax.persistence.OneToOne;
+import javax.persistence.Table;
 
 @Entity
+@Table(name="borrowerDetail")
 public class BorrowerDetail extends BaseEntity {
 
     private String address;
     private String city;
     private String email;
     private String phoneNo;
+    @OneToOne
+    private Borrower borrower;
 
     public BorrowerDetail() {
         super();
@@ -45,4 +50,13 @@ public class BorrowerDetail extends BaseEntity {
     public void setPhoneNo(String phoneNo) {
         this.phoneNo = phoneNo;
     }
+
+    public Borrower getBorrower() {
+        return borrower;
+    }
+
+    public void setBorrower(Borrower borrower) {
+        this.borrower = borrower;
+    }
 }
+

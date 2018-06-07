@@ -3,7 +3,6 @@ package pl.sda.library.model;
 
 import pl.sda.library.entity.Book;
 
-import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
 import javax.persistence.criteria.Order;
 import java.util.List;
@@ -13,9 +12,9 @@ public class BookRepository extends BaseRepository<Book> implements IBaseReposit
 
     private EntityTransaction et;
 
-    public BookRepository(EntityManagerFactory emf) {
-        super(emf);
-        this.et = em.getTransaction();
+    public BookRepository() {
+        super();
+      //  this.et = em.getTransaction();
     }
 
     @Override
@@ -30,8 +29,13 @@ public class BookRepository extends BaseRepository<Book> implements IBaseReposit
     }
 
     @Override
-    public List findAll(Order order, String... porpertiesOrder) {
-        return super.findAll( null, null );
+    public List<Book> findAll(Order order, String... porpertiesOrder) {
+        return super.findAll( order, porpertiesOrder );
+    }
+
+    @Override
+    public List<Book> findAll() {
+        return super.findAll();
     }
 
     @Override

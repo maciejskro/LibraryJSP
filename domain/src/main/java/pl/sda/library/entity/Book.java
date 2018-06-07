@@ -1,25 +1,31 @@
 package pl.sda.library.entity;
 
 
-
-import javax.persistence.Entity;
-import javax.persistence.OneToOne;
+import javax.persistence.*;
 import java.time.LocalDate;
+import java.util.List;
 
 @Entity
+@Table(name="book")
 public class Book extends BaseEntity {
 
-    private String title;
-    @OneToOne
-    private Author autorID;
-    private LocalDate releaseDate;
-    private Integer pages;
     private String ISBN;
+    @Enumerated(EnumType.STRING)
     private BooksType booksType;
-    private Byte isBorrow;
     private String description;
+    private Boolean isBorrow;
+    private Integer pages;
+    private LocalDate releaseDate;
+    private String title;
+
+    @ManyToMany
+    private List<Author> authors;
+
+    @OneToMany(mappedBy = "book")
+    public List<Borrow> borrowList;
 
     public Book(){
+        super();
     }
 
     public String getTitle() {
@@ -30,12 +36,12 @@ public class Book extends BaseEntity {
         this.title = title;
     }
 
-    public Author getAutorID() {
-        return autorID;
+    public List<Author> getAuthors() {
+        return authors;
     }
 
-    public void setAutorID(Author autorID) {
-        this.autorID = autorID;
+    public void setAuthors(List<Author> autorID) {
+        this.authors = autorID;
     }
 
     public LocalDate getReleaseDate() {
@@ -70,11 +76,11 @@ public class Book extends BaseEntity {
         this.booksType = booksType;
     }
 
-    public Byte getIsBorrow() {
+    public Boolean getIsBorrow() {
         return isBorrow;
     }
 
-    public void setIsBorrow(Byte isBorrow) {
+    public void setIsBorrow(Boolean isBorrow) {
         this.isBorrow = isBorrow;
     }
 
@@ -85,4 +91,13 @@ public class Book extends BaseEntity {
     public void setDescription(String description) {
         this.description = description;
     }
+
+    public List<Borrow> getBorrowList() {
+        return borrowList;
+    }
+
+    public void setBorrowList(List<Borrow> borrowList) {
+        this.borrowList = borrowList;
+    }
+
 }

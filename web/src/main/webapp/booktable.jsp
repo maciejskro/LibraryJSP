@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%--
   Created by IntelliJ IDEA.
   User: mskrobiszewski
@@ -18,6 +19,7 @@
                 <th>Category</th>
                 <th>Release</th>
                 <th>Pages</th>
+                <th>Select book</th>
                 </thead>
                 <tbody>
                  <c:forEach items="${requestScope.books}" var="book" varStatus="loop">
@@ -29,10 +31,12 @@
                          <td>${book.booksType}</td>
                          <td>${book.releaseDate}</td>
                          <td>${book.pages}</td>
+                         <td><input type="radio" name ="selected" value="${book.id}" ></td>
                      </tr>
                  </c:forEach>
                 </tbody>
             </table>
             <input type="hidden" value="" name=""/>
         </form>
+
 

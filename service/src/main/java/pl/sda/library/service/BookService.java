@@ -1,23 +1,28 @@
 package pl.sda.library.service;
 
 import pl.sda.library.dto.BookDTO;
+import pl.sda.library.entity.Author;
 import pl.sda.library.entity.Book;
 import pl.sda.library.entity.BooksType;
+import pl.sda.library.exception.AuthorNotFoundException;
 import pl.sda.library.exception.ItemNoFoundException;
+import pl.sda.library.model.AuthorRepository;
 import pl.sda.library.model.BookRepository;
 import pl.sda.library.model.IBaseRepository;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 public class BookService implements IBookService  {
 
     private IBaseRepository<Book> bookRepository;
+    private IBaseRepository<Author> authotRepository;
 
     public BookService() {
         this.bookRepository = new BookRepository();
-
+        this.authotRepository = new AuthorRepository();
     }
 
     @Override
@@ -51,12 +56,29 @@ public class BookService implements IBookService  {
     }
 
     @Override
-    public Boolean addBook(BookDTO book) {
+    public Boolean addBook(BookDTO bookdto) throws  AuthorNotFoundException {
+        Author a = Optional.ofNullable(authotRepository.find(1l)).orElseThrow(
+                () -> {
+                    return new AuthorNotFoundException("author not found");
+                }
+        );
+        Book book = createBook(bookdto);
+        book.setAuthors(Arrays.asList(a));
+        bookRepository.create(book);
         return null;
     }
+
+
 
     @Override
     public Boolean editBook(BookDTO book) {
         return null;
+    }
+    private Book createBook(BookDTO bookdto) {
+        Book result = new Book();
+            result.setTitle(bookdto.getTitle());
+            result.setDescription(bookdto.getDescription());
+            result.setBooksType(BooksType.valueOf( bookdto.getBooksType() ));
+        return result;
     }
 }

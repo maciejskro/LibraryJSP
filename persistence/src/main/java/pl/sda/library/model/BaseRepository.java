@@ -70,17 +70,11 @@ public abstract class BaseRepository<T>  implements IBaseRepository<T> {
     }
     public List<T> findAll() {
         List<T> result = new ArrayList<>();
-        EntityTransaction et = null;
         try {
-            et = em.getTransaction();
-            et.begin();
             Query q = em.createQuery("select o from " + entityClass.getSimpleName() + " o");
             result = q.getResultList();
-            et.commit();
         } catch (Exception e) {
-            if( et !=null) {
-                et.rollback();
-            }
+            result = null;
         }
         return result;
     }

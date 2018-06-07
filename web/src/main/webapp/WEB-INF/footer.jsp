@@ -15,7 +15,7 @@
             }
         </style>
         <div class="modal-footer text-muted">
-            Library suprer application <br/>
+            Library super application <br/>
             Copyright (R) Maciej Skrobiszewski
         </div>
     </div>
